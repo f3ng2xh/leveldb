@@ -117,6 +117,8 @@ endif(BUILD_SHARED_LIBS)
 include(GNUInstallDirs)
 
 add_library(leveldb "")
+add_subdirectory(app)
+
 target_sources(leveldb
   PRIVATE
     "${PROJECT_BINARY_DIR}/${LEVELDB_PORT_CONFIG_DIR}/port_config.h"
@@ -320,6 +322,7 @@ if(LEVELDB_BUILD_TESTS)
       "util/testutil.cc"
       "util/testutil.h"
   )
+
   if(NOT BUILD_SHARED_LIBS)
     target_sources(leveldb_tests
       PRIVATE
